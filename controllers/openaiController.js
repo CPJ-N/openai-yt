@@ -28,4 +28,21 @@ const generateMeta = async (title) => {
 
 }
 
-module.exports = { generateMeta }
+const generateImage = async (desc) => {
+
+    try{
+
+        const image = await openai.images.generate({
+            prompt: desc,
+            n: 1,
+            size: '1024x1024'
+        })
+        console.log(image.data)
+
+    } catch (error) {
+        console.error(error);
+    }
+  
+}
+
+module.exports = { generateMeta, generateImage }
